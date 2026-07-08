@@ -1,0 +1,405 @@
+/* ============================================================
+   Dr. P. Rajeswari — Faculty Portfolio
+   Design tokens
+   ============================================================ */
+:root{
+  --paper:      #F6F2E9;
+  --paper-dim:  #EFE9DA;
+  --navy:       #0E2038;
+  --navy-2:     #16324F;
+  --navy-3:     #1E4066;
+  --brass:      #B5842A;
+  --brass-light:#D9AE5C;
+  --ink:        #211D18;
+  --slate:      #5B6472;
+  --line:       #DCD3BE;
+  --line-dark:  #2A4360;
+  --white:      #FFFDF8;
+
+  --serif: "Fraunces", "Georgia", serif;
+  --sans:  "Source Sans 3", "Segoe UI", sans-serif;
+  --mono:  "IBM Plex Mono", "Courier New", monospace;
+
+  --max: 1180px;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;}
+::selection{background:var(--brass-light);color:var(--navy);}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+}
+
+/* ---------- Layout shells ---------- */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 32px;}
+section{padding:88px 0;}
+.section-head{margin-bottom:44px;max-width:640px;}
+.eyebrow{
+  font-family:var(--mono);
+  font-size:12.5px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--brass);
+  margin:0 0 10px;
+}
+.section-head h2{
+  font-family:var(--serif);
+  font-size:clamp(28px,3.4vw,40px);
+  font-weight:600;
+  margin:0 0 12px;
+  color:var(--navy);
+}
+.section-head p{color:var(--slate);margin:0;font-size:16.5px;}
+.hairline{border:none;border-top:1px solid var(--line);margin:0;}
+
+/* ---------- Top nav ---------- */
+.topnav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(246,242,233,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.topnav .wrap{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:14px;padding-bottom:14px;
+}
+.brand{
+  font-family:var(--serif);font-weight:600;font-size:17px;color:var(--navy);
+  text-decoration:none;letter-spacing:.01em;
+}
+.brand span{color:var(--brass);}
+.navlinks{display:flex;gap:28px;list-style:none;margin:0;padding:0;}
+.navlinks a{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;
+  text-decoration:none;color:var(--slate);
+  padding-bottom:3px;border-bottom:1px solid transparent;
+  transition:color .2s, border-color .2s;
+}
+.navlinks a:hover, .navlinks a.active{color:var(--navy);border-color:var(--brass);}
+.nav-cta{
+  font-family:var(--mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;
+  background:var(--navy);color:var(--white);padding:9px 16px;border-radius:2px;
+  text-decoration:none;white-space:nowrap;
+  border:1px solid var(--navy);
+  transition:background .2s,color .2s;
+}
+.nav-cta:hover{background:var(--brass);border-color:var(--brass);}
+.navtoggle{display:none;background:none;border:1px solid var(--line);border-radius:3px;padding:8px 10px;font-family:var(--mono);}
+
+/* ---------- Hero ---------- */
+.hero{
+  background:
+    radial-gradient(1100px 480px at 85% -10%, rgba(181,132,42,.16), transparent 60%),
+    linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%);
+  color:var(--white);
+  position:relative;
+  overflow:hidden;
+  padding:76px 0 0;
+}
+.hero::before{
+  /* faint schematic grid, nodding to circuit/antenna field without being loud */
+  content:"";
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(700px 500px at 78% 10%, black, transparent 75%);
+  pointer-events:none;
+}
+.hero-inner{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:48px;
+  align-items:center;
+  position:relative;
+  z-index:1;
+}
+.hero-kicker{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--brass-light);margin:0 0 18px;
+}
+.hero h1{
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:clamp(38px,5.2vw,64px);
+  line-height:1.04;
+  margin:0 0 14px;
+  letter-spacing:-.01em;
+}
+.hero h1 em{font-style:italic;font-weight:500;color:var(--brass-light);}
+.hero .role{
+  font-size:19px;color:#DCE3EC;margin:0 0 6px;font-weight:400;
+}
+.hero .org{
+  font-size:15.5px;color:#9FB0C4;margin:0 0 30px;
+}
+.hero-links{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:52px;}
+.btn{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;
+  padding:12px 20px;border-radius:2px;text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:transform .15s ease, background .2s, color .2s, border-color .2s;
+}
+.btn-primary{background:var(--brass);color:var(--navy);border:1px solid var(--brass);font-weight:600;}
+.btn-primary:hover{background:var(--brass-light);transform:translateY(-1px);}
+.btn-ghost{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.32);}
+.btn-ghost:hover{border-color:var(--brass-light);color:var(--brass-light);transform:translateY(-1px);}
+
+.hero-portrait{
+  position:relative;
+  justify-self:center;
+  width:min(320px, 82%);
+}
+.portrait-frame{
+  position:relative;
+  border-radius:6px;
+  padding:10px;
+  background:linear-gradient(160deg, var(--brass) 0%, var(--brass-light) 100%);
+}
+.portrait-frame img{
+  width:100%;height:340px;object-fit:cover;object-position:50% 18%;
+  border-radius:3px;display:block;
+  filter:saturate(1.03) contrast(1.02);
+}
+.portrait-caption{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--brass-light);text-align:center;margin-top:14px;
+}
+
+/* ---------- Ruler stat strip (signature element) ---------- */
+.ruler{
+  position:relative;z-index:1;
+  border-top:1px solid rgba(255,255,255,.14);
+  background:rgba(6,16,30,.35);
+}
+.ruler-track{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  position:relative;
+}
+.ruler-track::before{
+  content:"";
+  position:absolute;top:0;left:0;right:0;height:6px;
+  background-image:repeating-linear-gradient(
+    90deg, var(--brass) 0 1px, transparent 1px 24px
+  );
+  opacity:.55;
+}
+.ruler-item{
+  padding:26px 20px 30px;
+  border-left:1px solid rgba(255,255,255,.1);
+  text-align:left;
+}
+.ruler-item:first-child{border-left:none;}
+.ruler-num{
+  font-family:var(--mono);font-weight:600;
+  font-size:clamp(24px,2.6vw,32px);
+  color:var(--brass-light);
+  display:block;
+}
+.ruler-label{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:#AEBBCC;margin-top:6px;display:block;
+}
+
+/* ---------- Profile / About ---------- */
+.profile{
+  display:grid;grid-template-columns:.42fr .58fr;gap:64px;
+}
+.profile-lede p{
+  font-family:var(--serif);
+  font-size:clamp(20px,2vw,25px);
+  line-height:1.5;
+  color:var(--navy);
+  font-weight:500;
+  margin:0;
+}
+.profile-body p{margin:0 0 16px;color:var(--ink);font-size:16px;}
+.profile-body p:last-child{margin-bottom:0;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;}
+.chip{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;
+  border:1px solid var(--line);background:var(--white);
+  padding:6px 12px;border-radius:20px;color:var(--navy-2);
+}
+
+/* ---------- Timeline (Education / Experience) ---------- */
+.timeline{position:relative;padding-left:0;}
+.timeline::before{
+  content:"";position:absolute;left:126px;top:6px;bottom:6px;width:1px;
+  background:var(--line);
+}
+.trow{
+  display:grid;grid-template-columns:110px 1px 1fr;gap:0 26px;
+  padding:22px 0;
+  position:relative;
+}
+.trow + .trow{border-top:1px solid var(--line);}
+.tyear{
+  font-family:var(--mono);font-size:13px;color:var(--brass);font-weight:600;
+  padding-top:2px;letter-spacing:.02em;
+}
+.tdot{position:relative;}
+.tdot::before{
+  content:"";position:absolute;left:-4.5px;top:6px;width:9px;height:9px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--brass);
+}
+.tbody h3{
+  font-family:var(--serif);font-size:19px;margin:0 0 4px;color:var(--navy);font-weight:600;
+}
+.tbody .org{font-size:14.5px;color:var(--slate);margin:0 0 6px;}
+.tbody .meta{font-family:var(--mono);font-size:12px;color:var(--brass);letter-spacing:.03em;}
+.tbody .note{font-size:14.5px;color:var(--ink);margin-top:8px;}
+
+/* ---------- Research stats + publications ---------- */
+.stat-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--line);border:1px solid var(--line);
+  margin-bottom:56px;
+}
+.stat-cell{background:var(--white);padding:26px 22px;}
+.stat-cell b{
+  display:block;font-family:var(--serif);font-size:34px;color:var(--navy);font-weight:600;
+}
+.stat-cell span{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);
+}
+.pub-list{list-style:none;margin:0;padding:0;}
+.pub-item{
+  display:grid;grid-template-columns:64px 1fr;gap:20px;
+  padding:24px 0;border-top:1px solid var(--line);
+}
+.pub-item:last-child{border-bottom:1px solid var(--line);}
+.pub-tag{
+  font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--brass);
+  border:1px solid var(--brass);border-radius:3px;height:26px;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+}
+.pub-item h4{margin:0 0 6px;font-family:var(--serif);font-size:17.5px;font-weight:600;color:var(--navy);line-height:1.35;}
+.pub-item p{margin:0;color:var(--slate);font-size:14.5px;}
+
+/* ---------- Two-col cards (Patents, Leadership) ---------- */
+.card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+.card{
+  background:var(--white);border:1px solid var(--line);border-radius:4px;
+  padding:28px;position:relative;
+}
+.card::before{
+  content:"";position:absolute;top:0;left:0;width:100%;height:3px;
+  background:linear-gradient(90deg,var(--brass),transparent);
+}
+.card h3{font-family:var(--serif);font-size:19px;margin:0 0 10px;color:var(--navy);font-weight:600;}
+.card p{margin:0 0 6px;font-size:14.5px;color:var(--ink);}
+.card .meta{font-family:var(--mono);font-size:12px;color:var(--slate);margin-top:10px;}
+
+/* ---------- Leadership highlight rows ---------- */
+.lead-row{
+  display:grid;grid-template-columns:100px 1fr; gap:24px;
+  padding:20px 0;border-top:1px solid var(--line);
+}
+.lead-row:last-child{border-bottom:1px solid var(--line);}
+.lead-row .yr{font-family:var(--mono);color:var(--brass);font-size:13px;font-weight:600;}
+.lead-row h4{margin:0 0 4px;font-family:var(--sans);font-weight:700;font-size:15.5px;color:var(--navy);}
+.lead-row p{margin:0;font-size:14px;color:var(--slate);}
+
+/* ---------- Awards / recognition strip ---------- */
+.award-list{list-style:none;margin:0;padding:0;display:grid;gap:14px;}
+.award-list li{
+  display:flex;gap:14px;align-items:flex-start;
+  font-size:15px;color:var(--ink);
+}
+.award-list li::before{
+  content:"✦";color:var(--brass);font-size:14px;margin-top:2px;
+}
+
+/* ---------- Affiliations compact ---------- */
+.affil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);}
+.affil-grid div{padding:18px 20px;border-left:1px solid var(--line);}
+.affil-grid div:first-child{border-left:none;}
+.affil-grid b{display:block;font-family:var(--serif);font-size:16.5px;color:var(--navy);margin-bottom:4px;}
+.affil-grid span{font-family:var(--mono);font-size:11.5px;color:var(--slate);letter-spacing:.03em;}
+
+/* ---------- Contact ---------- */
+.contact{
+  background:linear-gradient(180deg, var(--navy) 0%, var(--navy-3) 100%);
+  color:var(--white);position:relative;overflow:hidden;
+}
+.contact::before{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(800px 500px at 15% 20%, black, transparent 75%);
+}
+.contact .wrap{position:relative;z-index:1;}
+.contact .section-head h2{color:var(--white);}
+.contact .section-head p{color:#AEBBCC;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+.contact-block b{
+  display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--brass-light);margin-bottom:10px;
+}
+.contact-block a, .contact-block p{
+  display:block;color:#E7ECF3;text-decoration:none;font-size:15.5px;margin-bottom:6px;
+}
+.contact-block a:hover{color:var(--brass-light);}
+.id-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
+.id-pill{
+  font-family:var(--mono);font-size:12px;border:1px solid rgba(255,255,255,.25);
+  padding:7px 12px;border-radius:20px;text-decoration:none;color:#E7ECF3;
+  transition:border-color .2s,color .2s;
+}
+.id-pill:hover{border-color:var(--brass-light);color:var(--brass-light);}
+
+/* ---------- Footer ---------- */
+footer{
+  background:var(--navy);color:#8DA0B8;padding:26px 0;font-size:13px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+/* ---------- Reveal-on-scroll ---------- */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease;}
+.reveal.in{opacity:1;transform:none;}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width:900px){
+  .hero-inner{grid-template-columns:1fr;text-align:left;}
+  .hero-portrait{justify-self:start;width:220px;}
+  .profile{grid-template-columns:1fr;gap:28px;}
+  .ruler-track{grid-template-columns:repeat(2,1fr);}
+  .ruler-item:nth-child(3){border-left:none;}
+  .stat-grid{grid-template-columns:repeat(2,1fr);}
+  .card-grid{grid-template-columns:1fr;}
+  .affil-grid{grid-template-columns:1fr;}
+  .affil-grid div{border-left:none;border-top:1px solid var(--line);}
+  .affil-grid div:first-child{border-top:none;}
+  .contact-grid{grid-template-columns:1fr;}
+  .navlinks{display:none;}
+  .navtoggle{display:block;}
+  .timeline::before{left:0;display:none;}
+  .trow{grid-template-columns:1fr;gap:6px;}
+  .tdot{display:none;}
+  section{padding:60px 0;}
+}
+@media (max-width:560px){
+  .wrap{padding:0 20px;}
+  .pub-item{grid-template-columns:1fr;}
+  .lead-row{grid-template-columns:1fr;gap:6px;}
+}
